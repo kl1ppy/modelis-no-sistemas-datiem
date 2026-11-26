@@ -5,18 +5,17 @@ AI4I 2020 Predictive Maintenance Dataset ir sintētiska datu kopa, kas veidota, 
 
 
 ## Datu tīrīšana
-Tika noņemtas pilnīgi vienādas rindas un ierakstu identifikatori (UDI/UID, Product ID), jo tie nav iekārtas darbības mērījumi. Skripts arī pārbauda trūkstošās vērtības un vajadzības gadījumā tās aizpilda. Šajā datu kopā nav norādītas trūkstošās vērtības, tādēļ aizpildīšana var nebūt nepieciešama. Dati ir saglabāti jaunā failā, oriģināls nav mainīts.
+Tika noņemtas pilnīgi vienādas rindas un ierakstu identifikatori (UDI/UID, Product ID), jo tie nav iekārtas darbības mērījumi. Skripts arī pārbauda trūkstošās vērtības un vajadzības gadījumā tās aizpilda. Šajā datu kopā nav norādītas trūkstošās vērtības, tādēļ aizpildīšana var nebūt nepieciešama. Dati ir saglabāti jaunā failā `tirs.csv`, oriģināls nav mainīts.
 
 ## Modeļa rezultāts
-Pēc `python modelis.py` palaišanas šeit ieraksti izvadītos skaitļus:
-- Modeļa accuracy: ___
-- Bāzes accuracy: ___
-- Modeļa balanced accuracy: ___
-- Bāzes balanced accuracy: ___
-- Recall (atteices klase): ___
-- Konfūzijas matrica: ___
+- Modeļa accuracy: 0.980
+- Bāzes accuracy: 0.966
+- Modeļa balanced accuracy: 0.825
+- Bāzes balanced accuracy: 0.500
+- Recall (atteices klase): 0.659
+- Konfūzijas matrica: `[[2394, 21], [29, 56]]` (TN=2394, FP=21, FN=29, TP=56)
 
-Accuracy rāda kopējo pareizo prognožu daļu. Balanced accuracy vidējo pareizību ņem vērā katrai klasei atsevišķi, kas ir noderīgi, jo atteices ir retākas nekā normāla darbība. Recall parāda, cik no īstajām atteicēm modelis pamanīja.
+Modelis pārspēja bāzes līniju (0.980 pret 0.966 un balanced accuracy 0.825 pret 0.500), jo bāzes līnija vienmēr prognozē klasi `0` (nav atteices) un neatrod nevienu bojājumu. Accuracy rāda kopējo pareizo prognožu daļu, balanced accuracy ņem vērā katru klasi atsevišķi, bet recall (0.659) parāda, ka modelis pamanīja 56 no 85 reālajām atteicēm.
 
 
 ## Ko darītu reālā sistēmā
@@ -30,4 +29,4 @@ Ja modelis brīdinātu par iespējamu atteici, tehniķis pārbaudītu iekārtas 
 Modeli nedrīkst izmantot kā vienīgo pamatu, lai automātiski izslēgtu vai atļautu iekārtas darbību. Dati ir sintētiski un modelis var kļūdīties, tāpēc nepieciešama tehniķa pārbaude.
 
 ## Pašvērtējums
-Man izdevās izveidot datu apstrādes un modeļa apmācības ķēdi. Neizdevās pilnībā izvērtēt modeli, kamēr nav palaisti skripti un pārbaudīti faktiskie rezultāti. Nākamreiz es salīdzinātu vairākus modeļus un pārbaudītu, vai prognozes darbojas arī ar reāliem iekārtas datiem.
+Man izdevās izveidot datu apstrādes un modeļa apmācības ķēdi. Sākumā grūtības sagādāja darba vides iestatīšana skriptu palaišanai un nelīdzsvaroto klašu rādītāju interpretācija. Nākamreiz es salīdzinātu vairākus modeļus un pārbaudītu, vai prognozes darbojas arī ar reāliem iekārtas datiem.
