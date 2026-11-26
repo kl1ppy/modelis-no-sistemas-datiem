@@ -1,0 +1,4 @@
+Datu kopa: AI4I 2020 Predictive Maintenance Dataset
+Avots (saite): https://archive.ics.uci.edu/dataset/601/ai4i+2020+predictive+maintenance+dataset
+Lejupielādes datums: 26.11.2026.
+Licence: CC BY 4.0
